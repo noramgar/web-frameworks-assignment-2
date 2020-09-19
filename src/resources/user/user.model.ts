@@ -5,7 +5,7 @@ export default class User {
     email: String
     password: String
 
-    private static users: User[] = [];
+    static users: User[] = [];
 
     constructor(username: String,firstName: String,lastName: String,email: String,password: String) {
         this.username = username;
@@ -30,5 +30,13 @@ export default class User {
     
     static deleteUser(username: String) {
         User.users = User.users.filter(user => user.username !== username)
+    }
+
+    static getUser(id: String) {
+        for (const user of User.users) {
+            if (user.username === id) {
+                return user;
+            }
+        }
     }
 }
