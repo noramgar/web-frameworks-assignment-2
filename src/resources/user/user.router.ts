@@ -3,7 +3,6 @@ import User from './user.model'
 
 const router = Router()
 
-
 // Get a user
 router.get('/:id', (req, res) => {
     if (User.userIdExists(req.params.id)) {
@@ -36,11 +35,10 @@ router.delete('/:id', (req, res) => {
 // Create a user
 router.post('/', (req, res) => {
     if (User.userIdExists(req.body.UserID)) {
-        res.json({
+        res.status(403).json({
             message: "username is taken"
         })
     }
-
     else {
         const newUser = new User(req.body.UserID, req.body.firstName, req.body.lastName, req.body.email, req.body.password)
         newUser.save()
@@ -57,7 +55,7 @@ router.patch('/:id', (req, res) => {
         res.json(user)
     }
     else {
-        res.json({
+        res.status(404).json({
             statusCode: 404,
             message: "User not found"
         })

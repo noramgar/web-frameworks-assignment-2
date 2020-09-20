@@ -25,7 +25,7 @@ app.get('/Users', (req, res) => {
   res.json(User.users)
 })
 
-// Help page
+// Serve help page
 app.get('*', (req, res) => {
   //res.sendFile(path.join(__dirname + '/public/help.html'))
   res.sendFile('./public/help.html', { root: __dirname });
