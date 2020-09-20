@@ -1,5 +1,7 @@
+import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from "constants"
+
 export default class User {
-    username: String
+    userID: String
     firstName: String
     lastName: String
     email: String
@@ -7,8 +9,8 @@ export default class User {
 
     static users: User[] = [];
 
-    constructor(username: String,firstName: String,lastName: String,email: String,password: String) {
-        this.username = username;
+    constructor(userID: String,firstName: String,lastName: String,email: String,password: String) {
+        this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -19,23 +21,36 @@ export default class User {
         User.users.push(this)
     }
 
-    static userIdExists(username: String) {
+    static userIdExists(userID: String) {
         for (const user of User.users) {
-            if (user.username === username) {
+            if (user.userID === userID) {
                 return true;
             }
         }
         return false;
     }
     
-    static deleteUser(username: String) {
-        User.users = User.users.filter(user => user.username !== username)
+    static deleteUser(userID: String) {
+        User.users = User.users.filter(user => user.userID !== userID)
     }
 
     static getUser(id: String) {
         for (const user of User.users) {
-            if (user.username === id) {
+            if (user.userID === id) {
                 return user;
+            }
+        }
+    }
+
+    update(props: any) {
+        for (let prop in this) {
+            
+            if (prop === 'userID') {
+                continue
+            }
+
+            if (props.hasOwnProperty(prop)) {
+                this[prop] = props[prop]
             }
         }
     }
