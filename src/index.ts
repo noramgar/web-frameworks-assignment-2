@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import { json, urlencoded } from 'body-parser'
 
+import fs from 'fs'
+
 
 import User from './resources/user/user.model'
 import userRouter from './resources/user/user.router'
@@ -11,6 +13,7 @@ const port = 3000
 
 app.use(json())
 app.use(urlencoded({ extended: true }))
+
 app.use(express.static(__dirname + "/public", {
     index: false, 
     immutable: true, 
@@ -27,10 +30,15 @@ app.get('/Users', (req, res) => {
 
 // Serve help page
 app.get('*', (req, res) => {
-  //res.sendFile(path.join(__dirname + '/public/help.html'))
   res.sendFile('./public/help.html', { root: __dirname });
 })
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
+
+let jose = new User('jgomez', 'Jose', 'Gomez', 'jose@josecgomez.com', 'pass123!');
+jose.save();
+
+let mike = new User('mrooney', 'Mike', 'Rooney', 'mike@gmail.com', '#toastr312');
+mike.save()

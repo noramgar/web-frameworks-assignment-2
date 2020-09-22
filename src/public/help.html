@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
     <h1>API Reference</h1>
@@ -18,56 +18,75 @@
         <td>GET</td>
         <td>/</td>
         <td>
-          This is the default route the application should respond with a HELP
-          Page in simple HTML that outlines the available functionality. A
-          simple table which outlines each available request, the expected input
-          and output data as well as any expected errors or requirements.
+          <p>
+            This is the default route. the application should respond with a
+            help page in simple HTML that outlines the available functionality.
+            A simple table which outlines each available request, the expected
+            input and output data as well as any expected errors or
+            requirements.
+          </p>
         </td>
       </tr>
       <tr>
         <td>GET</td>
         <td>/Users</td>
         <td>
-          Should return a list of any user in the database (as a JSON array)
-          with all their properties
+          <p>
+            Should return a list of any user in the database (as a JSON array)
+            with all their properties.
+          </p>
+          <img src="./images/get-users.png" alt="get users" />
         </td>
       </tr>
       <tr>
         <td>POST</td>
         <td>/User</td>
         <td>
-          Should Create a new User record and take in the following properties
-          UserID Fist Name Last Name Email Address Password There should be
-          error checking to ensure that the UserID doesn’t already exist if it
-          does an error should be returned If the user is successfully create it
-          should return the user entity along with a 201 (Created Status)
+          <p>
+            Creates a new User record and takes in the following properties: UserID,
+            firstName, lastName, email, and password. There should be error
+            checking to ensure that the UserID doesn’t already exist. If it does,
+            an error should be returned. If the user is successfully created, it
+            should return the user entity along with a 201 (Created Status).
+          </p>
+          <img src="./images/post-user.png" alt="post user" />
         </td>
       </tr>
       <tr>
-          <td>GET</td>
-          <td>/User/{ID}</td>
-          <td>
-            Should return a specific User ID (the user ID provided in the URL) with all its
-            properties if it exists.
-            If the User ID is not found it should return an error 404 (Not Found) with an
-            appropriate message
-          </td>
+        <td>GET</td>
+        <td>/User/{ID}</td>
+        <td>
+          <p>
+            Should return a specific User (selected by its userID property provided in the URL)
+            with all its properties if it exists. If the User ID is not found, it
+            should return an error 404 (Not Found) with an appropriate message.
+          </p>
+          <img src="./images/user-not-found.png" alt="user not found" />
+          <img src="./images/get-user.png" alt="get user" />
+        </td>
       </tr>
       <tr>
-          <td>PATCH</td>
-          <td>/User/{ID}</td>
-          <td>
-            Should allow you to Update (change) any data (except the ID) for an existing
-            User. If the User isn’t found return an error (same as above 404 not found)
-          </td>
+        <td>PATCH</td>
+        <td>/User/{ID}</td>
+        <td>
+          <p>
+            Should allow you to Update (change) any data (except the ID) for an
+            existing User. If the User isn’t found, return an error (same as
+            above 404 not found).
+          </p>
+          <img src="./images/patch-user.png" alt="update user" />
+        </td>
       </tr>
       <tr>
-          <td>DELETE</td>
-          <td>/User/{ID}</td>
-          <td>
-            Should Delete a user (if it exists) if it doesn’t exist it should return an Error
-            with a status code 404 (Not found)
-          </td>
+        <td>DELETE</td>
+        <td>/User/{ID}</td>
+        <td>
+          <p>
+            Should delete a User if it exists. If it doesn’t exist, it should
+            return an Error with a status code 404 (Not found).
+          </p>
+          <img src="./images/delete-user.png" alt="delete user" />
+        </td>
       </tr>
     </table>
   </body>
