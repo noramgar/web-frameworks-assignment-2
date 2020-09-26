@@ -8,6 +8,9 @@ import userRouter from './resources/user/user.router'
 const app = express()
 const port = 3000
 
+app.set('view engine','ejs');
+app.set('views','views');
+
 app.use(json())
 app.use(urlencoded({ extended: true }))
 
@@ -26,6 +29,11 @@ app.use('/User', userRouter)
 // Get all users
 app.get('/Users', (req, res) => {
   res.json(User.users)
+})
+
+// Serve CRUD page for users
+app.get('/crud', (req, res) => {
+  res.render('users', { testTitle: "My Data" });
 })
 
 // Serve help page
