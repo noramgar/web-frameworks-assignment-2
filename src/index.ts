@@ -11,13 +11,15 @@ const port = 3000
 app.use(json())
 app.use(urlencoded({ extended: true }))
 
+app.use(express.static(path.join(process.cwd(),'public')));
+
 // Serve static files in public directory
-app.use(express.static(path.join(__dirname, '/public'), {
-    index: false, 
-    immutable: true, 
-    cacheControl: true,
-    maxAge: "30d"
-}));
+// app.use(express.static(path.join(process.cwd(), 'public'), {
+//     index: false, 
+//     immutable: true, 
+//     cacheControl: true,
+//     maxAge: "30d"
+// }));
 
 app.use('/User', userRouter)
 
@@ -28,7 +30,7 @@ app.get('/Users', (req, res) => {
 
 // Serve help page
 app.get('*', (req, res) => {
-  res.sendFile('/public/help.html', { root: __dirname });
+  res.sendFile('public/help.html', { root: process.cwd() });
 })
 
 app.listen(port, () => {
