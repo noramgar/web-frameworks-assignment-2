@@ -2,9 +2,6 @@ import express from 'express';
 import path from 'path';
 import { json, urlencoded } from 'body-parser'
 
-import fs from 'fs'
-
-
 import User from './resources/user/user.model'
 import userRouter from './resources/user/user.router'
 
