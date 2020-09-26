@@ -1,5 +1,3 @@
-import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from "constants"
-
 export default class User {
     userID: String
     firstName: String
@@ -9,7 +7,7 @@ export default class User {
 
     static users: User[] = [];
 
-    constructor(userID: String,firstName: String,lastName: String,email: String,password: String) {
+    constructor(userID: String, firstName: String, lastName: String, email: String, password: String) {
         this.userID = userID;
         this.firstName = firstName;
         this.lastName = lastName;
