@@ -1,12 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <h1>Hello EJS!</h1>
-    <h2><%= testTitle %></h2>
-</body>
+    <!-- <link rel="stylesheet" type="text/css" href="./css/help.css" /> -->
+    <link rel="stylesheet" type="text/css" href="./css/crud.css" />
+  </head>
+  <body>
+    <h1 id="head">Manage Users</h1>
+
+    <div class="flex-container">
+      <% for ( user of users ) { %>
+      <div class="card">
+        <div class="container">
+          <h4><b id="username"><%= user.userID %></b></h4>
+          <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" class="firstName" value="<%= user.firstName %>" />
+          </div>
+          <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="lastName" value="<%= user.lastName %>" required/>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" class="email" value="<%= user.email %>" />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="text" class="password" value="<%= user.password %>" />
+          </div>
+
+          <div class="btn-container">
+            <div>
+              <button type="submit" class="btn update-btn"><b>Update</b></button>
+            </div>
+            <div>
+              <button class="btn delete-btn"><b>Delete</b></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+      <div class="card">
+        <div class="container">
+          <h4><b>Create New User</b></h4>
+          <div>
+            <label for="userID">Username:</label>
+            <input type="text" class="userID"/>
+          </div>
+          <div>
+            <label for="firstName">First Name:</label>
+            <input type="text" class="firstName"/>
+          </div>
+          <div>
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="lastName"/>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" class="email" />
+          </div>
+          <div>
+            <label for="password">Password:</label>
+            <input type="text" class="password" />
+          </div>
+
+          <div class="btn-container">
+            <div>
+              <button class="btn create-btn"><b>Create User</b></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./scripts/crud-page.js"></script>
+  </body>
 </html>

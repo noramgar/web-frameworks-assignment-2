@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
         })
     }
     else {
-        const newUser = new User(req.body.UserID, req.body.firstName, req.body.lastName, req.body.email, req.body.password)
+        const newUser = new User(req.body.userID, req.body.firstName, req.body.lastName, req.body.email, req.body.password)
         newUser.save()
 
         res.status(201).json(newUser)   
