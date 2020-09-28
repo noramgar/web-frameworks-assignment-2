@@ -34,11 +34,26 @@ router.delete('/:id', (req, res) => {
 
 // Create a user
 router.post('/', (req, res) => {
-    if (User.userIdExists(req.body.UserID)) {
+    
+    if (!req.body.userID || 
+        !req.body.firstName || 
+        !req.body.lastName || 
+        !req.body.email || 
+        !req.body.password ||
+        req.body.userID.trim() === ''
+        ) 
+        {
+        res.status(400).json({
+            message: "invalid request"
+        })
+    }
+
+    else if (User.userIdExists(req.body.userID)) {
         res.status(403).json({
             message: "username is taken"
         })
     }
+    
     else {
         const newUser = new User(req.body.userID, req.body.firstName, req.body.lastName, req.body.email, req.body.password)
         newUser.save()
