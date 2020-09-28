@@ -68,7 +68,19 @@ document.querySelectorAll(".create-btn").forEach((item) => {
         })
         .then(response => response.json())
         .then(json => {
-            location.reload()
+            if (json.message === 'invalid request') {
+                let msg = document.createElement('p');
+                msg.innerText = "Invalid Request!"
+                msg.style.color = 'blue'
+                msg.style.textAlign = 'center'
+                div.querySelector('.btn-container').after(msg)
+                setTimeout(() => {
+                    msg.innerText = ''
+                }, 2500)
+            }
+            else {
+                location.reload()
+            }
         })      
     })  
 })
